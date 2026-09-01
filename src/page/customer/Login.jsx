@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-import React from 'react'
 
-const Login = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default Login
-=======
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StaffList from '../../Data/StaffList';
@@ -74,4 +62,3 @@ const Login = ({ setCurrentUser }) => {
 };
 
 export default Login;
->>>>>>> sovannKH
