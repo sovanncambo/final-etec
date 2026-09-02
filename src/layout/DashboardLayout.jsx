@@ -1,22 +1,9 @@
-<<<<<<< HEAD
 import React from 'react'
+import { Link, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default DashboardLayout
-=======
-
-import { Link, Outlet } from "react-router-dom";
-
-export default function DashboardLayout() {
-  return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
+     <div style={{ display: "flex", minHeight: "100vh" }}>
       {/* Sidebar ខាងឆ្វេង */}
       <aside >
         <h2>Admin Panel</h2>
@@ -43,6 +30,9 @@ export default function DashboardLayout() {
         </footer>
       </div>
     </div>
-  );
+  )
 }
->>>>>>> sovannKH
+
+export default DashboardLayout
+
+
