@@ -1,28 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Outlet } from "react-router-dom";
+import SideBar from '../components/deshboard/SideBar';
+import Search from '../components/deshboard/Search';
+const DashboardLayout = ({setCurrentUser,searchItem,setSearchItem}) => {
 
-const DashboardLayout = () => {
   return (
      <div style={{ display: "flex", minHeight: "100vh" }}>
       {/* Sidebar ខាងឆ្វេង */}
-      <aside >
-        <h2>Admin Panel</h2>
-        <ul >
-          <li><Link to="/admin">Dashboard</Link></li>
-          <li><Link to="/admin/add-food" >Add Food</Link></li>
-          <li><Link to="/admin/categories">Categories</Link></li>
-          <li><Link to="/admin/orders" >Orders</Link></li>
-          <li><Link to="/admin/users" >Users</Link></li>
-        </ul>
-      </aside>
+    
 
-      
-      <div >
+      <SideBar/>
+      <div className='w-[100%]'> 
         {/* Dashboard Top Header */}
-        <header >
-          <span>Welcome, Admin!</span>
+        <header className='py-3' >
+          <Search searchItem={searchItem} setSearchItem={setSearchItem}/>
+
         </header>
-        <main >
+        <main className='bg-gray-100'>
           <Outlet/>
         </main>
         <footer >

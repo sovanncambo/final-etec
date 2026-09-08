@@ -36,6 +36,8 @@ const App = () => {
     return saved ? JSON.parse(saved) : null;
   });
   const [ProductData,setProductData]=useState(HomeproductData)
+  const [searchItem,setSearchItem] = useState('')
+
   return (
     <div>
       <BrowserRouter>
@@ -58,8 +60,8 @@ const App = () => {
 
         {/* Protected Admin Routes: ស្រោបដោយ ProtectedRout (ចូលបានតែ STAFF) */}
         <Route element={<ProtectedRout currentUser={currentUser} />}>
-          <Route path="/admin" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
+          <Route path="/admin" element={<DashboardLayout setCurrentUser={setCurrentUser} searchItem={searchItem} setSearchItem={setSearchItem}/>}>
+            <Route index element={<Dashboard ProductData={ProductData} searchItem={searchItem}/>} />
             <Route path="food" element={<Food />} />
             <Route path="add-food" element={<AddFood />} />
             <Route path="categories" element={<Categories />} />

@@ -1,6 +1,6 @@
  const ProductItems=[
     {
-      img:"https://i.pinimg.com/1200x/28/df/09/28df09263b54af6ae8a146f7b6631da3.jpg",
+      img:"https://png.pngtree.com/png-clipart/20250106/original/pngtree-delicious-fresh-berger-food-png-image_18815120.png",
       title:"Crispy Chicken Burger",
       Price:5.59
     },
@@ -43,6 +43,66 @@
       img:"https://i.pinimg.com/1200x/b4/7d/65/b47d6558720dbc7daa90d0f48ea73826.jpg",
       title:"Fresh Matcha Latte",
       Price:4.59
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
+    },
+    {
+      img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
+      title:"Hot Latte",
+      Price:5.25
     },
     {
       img:"https://i.pinimg.com/1200x/6b/03/d0/6b03d0d1cc8d6b95cd85be87ab07723e.jpg",
