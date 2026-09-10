@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
@@ -63,7 +62,7 @@ const App = () => {
           <Route path="/admin" element={<DashboardLayout setCurrentUser={setCurrentUser} searchItem={searchItem} setSearchItem={setSearchItem}/>}>
             <Route index element={<Dashboard ProductData={ProductData} searchItem={searchItem}/>} />
             <Route path="food" element={<Food />} />
-            <Route path="add-food" element={<AddFood />} />
+            <Route path="add-food" element={<AddFood setProductData={setProductData} />} />
             <Route path="categories" element={<Categories />} />
             <Route path="orders" element={<Order />} />
             <Route path="users" element={<Users />} />
