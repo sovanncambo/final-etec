@@ -12,12 +12,18 @@ const CATEGORY_OPTIONS = [
   "Other",
 ];
 
+const AVAILABILITY_OPTIONS = ["In Stock", "Out of Stock"];
+
 const emptyForm = {
   title: "",
   price: "",
   category: CATEGORY_OPTIONS[0],
   imgUrl: "",
   description: "",
+  stock: "",
+  discount: "",
+  availability: AVAILABILITY_OPTIONS[0],
+  tags: "",
 };
 
 const AddFood = ({ setProductData }) => {
@@ -55,6 +61,13 @@ const AddFood = ({ setProductData }) => {
     if (!form.price || Number(form.price) <= 0)
       newErrors.price = "Enter a valid price greater than 0.";
     if (!form.imgUrl) newErrors.imgUrl = "Add an image URL or upload a photo.";
+    if (form.stock !== "" && Number(form.stock) < 0)
+      newErrors.stock = "Stock can't be negative.";
+    if (
+      form.discount !== "" &&
+      (Number(form.discount) < 0 || Number(form.discount) > 100)
+    )
+      newErrors.discount = "Discount must be between 0 and 100.";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -73,6 +86,13 @@ const AddFood = ({ setProductData }) => {
       category: form.category,
       description: form.description.trim(),
       img: form.imgUrl,
+      stock: form.stock === "" ? 0 : Number(form.stock),
+      discount: form.discount === "" ? 0 : Number(form.discount),
+      availability: form.availability,
+      tags: form.tags
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean),
     };
 
     setProductData((prev) => [newFood, ...prev]);
@@ -89,9 +109,21 @@ const AddFood = ({ setProductData }) => {
     setSuccess(false);
   };
 
+  const priceNum = Number(form.price) || 0;
+  const discountNum = Number(form.discount) || 0;
+  const discountedPrice = discountNum > 0
+    ? (priceNum - (priceNum * discountNum) / 100).toFixed(2)
+    : null;
+  const tagList = form.tags
+    .split(",")
+    .map((t) => t.trim())
+    .filter(Boolean);
+  const isOutOfStock = form.availability === "Out of Stock";
+
   return (
     <div className="p-4 md:p-6">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6 md:p-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
+      <div className="bg-white rounded-2xl shadow p-6 md:p-8">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-800">Add New Food</h1>
@@ -210,6 +242,9 @@ const AddFood = ({ setProductData }) => {
               </div>
             </div>
 
+
+            
+
             <div>
               <label className="block text-sm font-medium text-gray-600 mb-1">
                 Description{" "}
@@ -241,6 +276,87 @@ const AddFood = ({ setProductData }) => {
             </div>
           </div>
         </form>
+      </div>
+
+      {/* Live preview card */}
+      <div className="lg:sticky lg:top-6">
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2 px-1">
+          Live Preview
+        </p>
+        <div className="w-full max-w-[260px] mx-auto lg:mx-0 shadow rounded-[10px] bg-white overflow-hidden">
+          <div className="relative w-full h-[170px] bg-gray-100">
+            {preview ? (
+              <img
+                src={preview}
+                alt="preview"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center text-gray-300 gap-2">
+                <FaImage className="text-3xl" />
+                <span className="text-xs">Image preview</span>
+              </div>
+            )}
+
+            <span className="absolute top-2 left-2 bg-white/90 text-[11px] font-medium px-2 py-0.5 rounded-full text-gray-700">
+              {form.category}
+            </span>
+            
+          </div>
+
+          <div className="p-3 text-center">
+            <p className="font-bold text-[16px] truncate">
+              {form.title || "Food name"}
+            </p>
+
+            {discountedPrice ? (
+              <p className="font-bold text-xl">
+                <span className="text-red-600">${discountedPrice}</span>{" "}
+                <span className="text-gray-400 text-sm line-through">
+                  ${priceNum.toFixed(2)}
+                </span>
+              </p>
+            ) : (
+              <p className="font-bold text-xl text-red-600">
+                ${priceNum.toFixed(2)}
+              </p>
+            )}
+
+            {form.stock !== "" && (
+              <p className="text-xs text-gray-400 mt-0.5">
+                {form.stock} in stock
+              </p>
+            )}
+
+            {tagList.length > 0 && (
+              <div className="flex flex-wrap justify-center gap-1 mt-2">
+                {tagList.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {form.description && (
+              <p className="text-xs text-gray-400 mt-2 line-clamp-2">
+                {form.description}
+              </p>
+            )}
+
+            <button
+              type="button"
+              disabled
+              className="w-[85%] h-[36px] flex items-center justify-center gap-1 rounded-[10px] mt-3 mx-auto bg-yellow-400 text-sm font-medium cursor-default"
+            >
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );
