@@ -28,6 +28,7 @@ import Users from "./page/dashboard/Users";
 // Protected Route Component
 import ProtectedRout from "./ProtectedRout";
 import HomeproductData from "./Data/HomeproductData"
+import DefaultCategories from "./Data/CategoryList"
 
 const App = () => {
    const [currentUser, setCurrentUser] = useState(() => {
@@ -35,6 +36,7 @@ const App = () => {
     return saved ? JSON.parse(saved) : null;
   });
   const [ProductData,setProductData]=useState(HomeproductData)
+  const [categories, setCategories] = useState(DefaultCategories)
   const [searchItem,setSearchItem] = useState('')
 
   return (
@@ -62,8 +64,8 @@ const App = () => {
           <Route path="/admin" element={<DashboardLayout setCurrentUser={setCurrentUser} searchItem={searchItem} setSearchItem={setSearchItem}/>}>
             <Route index element={<Dashboard ProductData={ProductData} searchItem={searchItem}/>} />
             <Route path="food" element={<Food />} />
-            <Route path="add-food" element={<AddFood setProductData={setProductData} />} />
-            <Route path="categories" element={<Categories />} />
+            <Route path="add-food" element={<AddFood setProductData={setProductData} categories={categories} />} />
+            <Route path="categories" element={<Categories categories={categories} setCategories={setCategories} ProductData={ProductData} />} />
             <Route path="orders" element={<Order />} />
             <Route path="users" element={<Users />} />
           </Route>
